@@ -1,32 +1,44 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Navbar.css';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthProvider } from '../../../Contexts/AuthContext';
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthProvider);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error));
+    }
 
     const menuItem = <React.Fragment>
         <li>
-            <NavLink to="/" className={`font-medium tracking-wide text-white ${({isActive})=> isActive? 'active': undefined}`}>
+            <NavLink to="/" className={`font-medium tracking-wide text-white ${({ isActive }) => isActive ? 'active' : undefined}`}>
                 Home
             </NavLink>
         </li>
         <li>
-            <NavLink to="/login" className={`font-medium tracking-wide text-white ${({isActive})=> isActive? 'active': undefined}`}>
-                Login
-            </NavLink>
-        </li>
-        <li>
-            <NavLink to="/register" className={`font-medium tracking-wide text-white ${({isActive})=> isActive? 'active': undefined}`}>
-                Sign up
-            </NavLink>
-        </li>
-        <li>
-            <NavLink to="/contact" className={`font-medium tracking-wide text-white ${({isActive})=> isActive? 'active': undefined}`}>
+            <NavLink to="/contact" className={`font-medium tracking-wide text-white ${({ isActive }) => isActive ? 'active' : undefined}`}>
                 Contact
             </NavLink>
         </li>
-
+        
+        {
+            user?.uid ?
+                <li>
+                    <Link onClick={handleLogOut} className={`font-medium tracking-wide text-white ${({ isActive }) => isActive ? 'active' : undefined}`}>
+                        Logout
+                    </Link>
+                </li>
+                :
+                <li>
+                    <NavLink to="/login" className={`font-medium tracking-wide text-white ${({ isActive }) => isActive ? 'active' : undefined}`}>
+                        Login
+                    </NavLink>
+                </li>
+        }
 
     </React.Fragment>
 
@@ -50,8 +62,8 @@ const Navbar = () => {
                             <rect x="14" y="1" width="7" height="6" />
                             <rect x="14" y="11" width="7" height="12" />
                         </svg>
-                        <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
-                            Company
+                        <span className="ml-2 text-2xl font-bold tracking-wide text-violet-500">
+                            DeviceExpress
                         </span>
                     </Link>
                     <ul className="flex items-center hidden space-x-8 my-3 lg:flex">

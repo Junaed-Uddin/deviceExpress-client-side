@@ -2,25 +2,54 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthProvider } from '../../Contexts/AuthContext';
 
 const Register = () => {
     const { userRegister, googleLogin, updateUserInfo } = useContext(AuthProvider);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const navigate = useNavigate();
 
     const handleRegister = data => {
+        console.log(data)
         userRegister(data.email, data.password)
             .then(res => {
                 const user = res.user;
-                toast.success('Successfully Registered');
                 console.log(user);
-                
+                updateUserInfo({
+                    displayName: data.name
+                })
+                    .then(() => { })
+                    .catch((error) => console.log(error));
+
+                savedUser(data.name, data.email, data.userType);
             })
             .catch(error => {
                 console.log(error);
                 toast.error(error.message);
             });
+    }
+
+    const savedUser = (name, email, role) => {
+        const userInfo = { name, email, role };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(userInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.success) {
+                    toast.success(data.message);
+                    navigate('/');
+                }
+                else {
+                    toast.error(data.message)
+                }
+            })
     }
 
     const handleGoogleLogin = () => {
@@ -37,9 +66,9 @@ const Register = () => {
     }
 
     return (
-        <div className='flex flex-col items-center py-7 rounded-lg px-8 h-full w-full max-w-sm mx-auto shadow-2xl my-5 justify-center outline outline-slate-50'>
+        <div className='flex flex-col items-center py-5 rounded-lg px-8 h-full w-full max-w-sm mx-auto shadow-2xl my-5 justify-center outline outline-slate-50'>
             <form onSubmit={handleSubmit(handleRegister)} className='w-full max-w-sm mx-auto'>
-                <h2 className='text-2xl mb-3 font-semibold'>Register</h2>
+                <h2 className='text-3xl mb-1 text-center font-bold text-violet-500'>Register</h2>
                 <div className="form-control w-full max-w-xs mx-auto">
                     <label className="label">
                         <span className="label-text">Name</span>
@@ -52,7 +81,7 @@ const Register = () => {
                     )} className="input input-bordered w-full max-w-xs" />
                     {errors.name && <p className='text-red-500 text-start text-sm mt-2'>{errors.name.message}</p>}
                 </div>
-                <div className="form-control w-full max-w-xs mt-2 mx-auto">
+                <div className="form-control w-full max-w-xs mt-1 mx-auto">
                     <label className="label">
                         <span className="label-text">Email</span>
                     </label>
@@ -63,7 +92,7 @@ const Register = () => {
                     )} className="input input-bordered w-full max-w-xs" />
                     {errors.email && <p className='text-red-500 text-start mt-2 text-sm'>{errors.email.message}</p>}
                 </div>
-                <div className="form-control w-full max-w-xs mx-auto mt-2">
+                <div className="form-control w-full max-w-xs mx-auto mt-1">
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
@@ -76,6 +105,10 @@ const Register = () => {
                     )} className="input input-bordered w-full max-w-xs mt-1" />
                     {errors.password && <p className='text-red-500 text-start mt-2 text-sm'>{errors.password.message}</p>}
                 </div>
+                <select className="select select-bordered w-full mt-4 max-w-xs" {...register("userType")}>
+                    <option defaultValue>Buyer</option>
+                    <option>Seller</option>
+                </select>
                 <input type="submit" className='btn border-none bg-gradient-to-r from-sky-500 to-indigo-500 text-white mt-4 w-full' value='Register' />
                 <h2 className='text-start text-sm mt-2'>Already have an Account? <Link className='text-violet-500' to='/login'>Please Login</Link></h2>
                 <div className="divider">OR</div>
