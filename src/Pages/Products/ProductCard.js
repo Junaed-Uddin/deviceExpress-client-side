@@ -1,15 +1,14 @@
 import React from 'react';
 import { MdVerifiedUser } from 'react-icons/md';
-import BookingModal from '../Shared/BookingModal/BookingModal';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, setProductInfo }) => {
     const { name, image, original_price, resale_price, used_years, posted_time, seller_verified, location, description, sellers_name } = product;
 
     return (
         <>
             <div className="card bg-white shadow-2xl rounded-sm">
                 <figure className='h-full'><img src={image} className='h-full pt-4 w-full object-cover' alt="Shoes" /></figure>
-                <div className="card-body h-full">
+                <div className="card-body">
                     <div className='flex justify-between items-center'>
                         <p className='text-2xl font-bold'>{name}</p>
                         <div className="flex items-center gap-1">
@@ -27,12 +26,10 @@ const ProductCard = ({ product }) => {
                         <li className='text-sm text-gray-700'>Location: {location} BDT</li>
                     </ul>
                     <div className="card-actions justify-between items-center mt-5">
-                        <label htmlFor="booking-modal" className="btn border-none px-3 bg-gradient-to-r from-indigo-400 to-purple-500 text-white rounded font-semibold">Purchase Now</label>
+                        <label onClick={() => setProductInfo(product)} htmlFor="booking-modal" className="btn border-none px-3 bg-gradient-to-r from-indigo-400 to-purple-500 text-white rounded font-semibold">Purchase Now</label>
                         <div className='badge badge-secondary font-semibold'>{posted_time}</div>
                     </div>
-                    <BookingModal>
-                        
-                    </BookingModal>
+
                 </div>
             </div>
         </>

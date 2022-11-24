@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
@@ -11,7 +11,6 @@ const Register = () => {
     const navigate = useNavigate();
 
     const handleRegister = data => {
-        console.log(data)
         userRegister(data.email, data.password)
             .then(res => {
                 const user = res.user;
@@ -22,7 +21,7 @@ const Register = () => {
                     .then(() => { })
                     .catch((error) => console.log(error));
 
-                savedUser(data.name, data.email, data.userType);
+                storedUser(data.name, data.email, data.userType);
             })
             .catch(error => {
                 console.log(error);
@@ -30,7 +29,7 @@ const Register = () => {
             });
     }
 
-    const savedUser = (name, email, role) => {
+    const storedUser = (name, email, role) => {
         const userInfo = { name, email, role };
         fetch('http://localhost:5000/users', {
             method: 'POST',
@@ -57,7 +56,7 @@ const Register = () => {
             .then(res => {
                 const user = res.user;
                 console.log(user);
-                toast.success('Successfully Registered');
+                storedUser(user?.displayName, user?.email, 'Buyer');
             })
             .catch(error => {
                 console.log(error);

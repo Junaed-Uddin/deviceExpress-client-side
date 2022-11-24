@@ -24,14 +24,21 @@ const Navbar = () => {
                 Contact
             </NavLink>
         </li>
-        
+
         {
             user?.uid ?
-                <li>
-                    <Link onClick={handleLogOut} className={`font-medium tracking-wide text-white ${({ isActive }) => isActive ? 'active' : undefined}`}>
-                        Logout
-                    </Link>
-                </li>
+                <>
+                    <li>
+                        <NavLink to='/dashboard/myOrders' className={`font-medium tracking-wide text-white ${({ isActive }) => isActive ? 'active' : undefined}`}>
+                            Dashboard
+                        </NavLink>
+                    </li>
+                    <li>
+                        <Link onClick={handleLogOut} className={`font-medium tracking-wide text-white ${({ isActive }) => isActive ? 'active' : undefined}`}>
+                            Logout
+                        </Link>
+                    </li>
+                </>
                 :
                 <li>
                     <NavLink to="/login" className={`font-medium tracking-wide text-white ${({ isActive }) => isActive ? 'active' : undefined}`}>

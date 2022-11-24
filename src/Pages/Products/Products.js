@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import BookingModal from '../Shared/BookingModal/BookingModal';
 import ProductCard from './ProductCard';
 
 
 const Products = () => {
     const productsData = useLoaderData();
+    const [productInfo, setProductInfo] = useState({});
 
     return (
-        <section className='mx-14 my-10'>
+        <section className='mx-2 sm:mx-14 my-10'>
             <div className='flex items-center'>
                 <p className='text-2xl font-semibold'>Total Laptop Found: {productsData.data.length}</p>
             </div>
@@ -16,9 +18,14 @@ const Products = () => {
                     productsData.data.map(product => <ProductCard
                         key={product._id}
                         product={product}
+                        setProductInfo={setProductInfo}
                     ></ProductCard>)
                 }
             </div>
+            {productInfo && <BookingModal
+                productInfo={productInfo}
+                setProductInfo={setProductInfo}
+            ></BookingModal>}
         </section>
     );
 };
