@@ -11,6 +11,7 @@ import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import Products from "../Pages/Products/Products";
 import Register from "../Pages/Register/Register";
+import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -35,8 +36,8 @@ export const router = createBrowserRouter([
                 element: <Register></Register>
             },
             {
-                path: '/category/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`),
+                path: '/category/:name',
+                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.name}`),
                 element: <PrivateRoute><Products></Products></PrivateRoute>
             },
         ]
@@ -59,11 +60,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/allBuyers',
-                element: <AllBuyers></AllBuyers>
+                element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
             },
             {
                 path: '/dashboard/allSellers',
-                element: <AllSellers></AllSellers>
+                element: <AdminRoute></AdminRoute>
             },
         ]
     }

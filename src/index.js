@@ -5,6 +5,7 @@ import App from './App';
 import 'tw-elements';
 import reportWebVitals from './reportWebVitals';
 import AuthContext from './Contexts/AuthContext';
+import "react-datepicker/dist/react-datepicker.css";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

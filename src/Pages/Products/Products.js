@@ -3,7 +3,6 @@ import { useLoaderData } from 'react-router-dom';
 import BookingModal from '../Shared/BookingModal/BookingModal';
 import ProductCard from './ProductCard';
 
-
 const Products = () => {
     const productsData = useLoaderData();
     const [productInfo, setProductInfo] = useState({});

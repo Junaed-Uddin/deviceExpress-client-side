@@ -1,24 +1,30 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthProvider } from '../../Contexts/AuthContext';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
+    const [userEmail, setUserEmail] = useState('');
     const { userLogin, googleLogin } = useContext(AuthProvider);
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const location = useLocation();
     const navigate = useNavigate();
+    const [token] = useToken(userEmail);
     const from = location.state?.from?.pathname || '/';
+
+    if (token) {
+        navigate(from, { replace: true });
+    }
 
     const handleLogin = data => {
         userLogin(data.email, data.password)
             .then(res => {
                 const user = res.user;
                 console.log(user);
-                toast.success('Successfully Login');
-                navigate(from, { replace: true });
+                setUserEmail(data.email);
             })
             .catch(error => {
                 console.log(error)
@@ -26,12 +32,37 @@ const Login = () => {
             });
     }
 
+
+    const storedUser = (name, email, role) => {
+        const userInfo = { name, email, role };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(userInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    console.log(data);
+                    toast.success(data.message);
+                    setUserEmail(email);
+                    reset();
+                }
+                else {
+                    toast.error(data.message)
+                }
+            })
+    }
+
+
     const handleGoogleLogin = () => {
         googleLogin()
             .then(res => {
                 const user = res.user;
                 console.log(user);
-                toast.success('Successfully Registered');
+                storedUser(user?.displayName, user?.email, 'Buyer');
             })
             .catch(error => {
                 console.log(error);

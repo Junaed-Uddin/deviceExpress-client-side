@@ -12,7 +12,7 @@ const FeaturedBrand = ({ category }) => {
                 </Link>
                 <div className="py-3">
                     <h2 className="text-xl font-bold text-center">
-                        <Link to={`/category/${_id}`}>{name}</Link>
+                        <Link to={`/category/${name}`}>{name}</Link>
                     </h2>
                 </div>
             </div>

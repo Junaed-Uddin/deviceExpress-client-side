@@ -23,11 +23,11 @@ const OrderData = ({ order }) => {
             <td>
                 {resalePrice}
             </td>
-            <th>
-                {order.price && !order.paid ? <button button className="btn bg-red-500 text-white border-none">Pay</button> :
+            <td>
+                {order.resalePrice && !order.paid ? <button className="btn bg-red-500 text-white border-none">Pay</button> :
                     <span className='px-3 py-2 text-white bg-green-400 rounded border-none'>Paid</span>
                 }
-            </th>
+            </td>
         </tr >
     );
 };

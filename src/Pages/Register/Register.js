@@ -4,11 +4,18 @@ import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthProvider } from '../../Contexts/AuthContext';
+import useToken from '../../hooks/useToken';
 
 const Register = () => {
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
     const { userRegister, googleLogin, updateUserInfo } = useContext(AuthProvider);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const navigate = useNavigate();
+    const [token] = useToken(createdUserEmail);
+
+    if (token) {
+        navigate('/');
+    }
 
     const handleRegister = data => {
         userRegister(data.email, data.password)
@@ -40,10 +47,11 @@ const Register = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.success) {
+                    console.log(data);
                     toast.success(data.message);
-                    navigate('/');
+                    setCreatedUserEmail(email);
+                    reset();
                 }
                 else {
                     toast.error(data.message)
