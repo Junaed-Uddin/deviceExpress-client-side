@@ -7,7 +7,7 @@ import ProductData from './ProductData';
 const MyProducts = () => {
     const { user } = useContext(AuthProvider);
     const { data: products = [], isLoading, refetch } = useQuery({
-        queryKey: ['/category', user?.email],
+        queryKey: ['category', user?.email],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/category?email=${user?.email}`, {
                 headers: {

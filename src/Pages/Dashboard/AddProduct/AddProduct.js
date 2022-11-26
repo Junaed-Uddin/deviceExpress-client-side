@@ -6,10 +6,12 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { AuthProvider } from '../../../Contexts/AuthContext';
 import Loader from '../../../Components/Loader/Loader';
+import { useNavigate } from 'react-router-dom';
 
 const AddProduct = () => {
     const { user } = useContext(AuthProvider);
     const [startDate, setStartDate] = useState(new Date());
+    const navigate = useNavigate();
     const [postDate, setPostDate] = useState(new Date());
     const imageKey = process.env.REACT_APP_SECRET_Key;
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
@@ -33,6 +35,7 @@ const AddProduct = () => {
         const image = data.img[0];
         const formData = new FormData();
         formData.append('image', image);
+
         fetch(`https://api.imgbb.com/1/upload?key=${imageKey}`, {
             method: 'POST',
             body: formData
@@ -59,8 +62,6 @@ const AddProduct = () => {
                         status: 'available'
                     }
 
-                    console.log(productInfo);
-
                     fetch('http://localhost:5000/category', {
                         method: 'POST',
                         headers: {
@@ -74,7 +75,7 @@ const AddProduct = () => {
                             console.log(data);
                             toast.success(data.message);
                             reset();
-
+                            navigate('/dashboard/myProducts');
                         })
                 }
             })
@@ -114,7 +115,6 @@ const AddProduct = () => {
                         {
                             categories.map(category => <option
                                 key={category._id}
-
                             >{category.name}</option>)
                         }
                     </select>
@@ -124,14 +124,24 @@ const AddProduct = () => {
                     <label className="label">
                         <span className="label-text text-base font-semibold">Original Price</span>
                     </label>
-                    <input type="text" name='oPrice' placeholder="Original Price" {...register("oPrice")} className="input input-bordered w-full" />
+                    <input type="text" name='oPrice' placeholder="Original Price" {...register("oPrice",
+                        {
+                            required: 'Original price is required',
+                        }
+                    )} className="input input-bordered w-full" />
+                    {errors.oPrice && <p className='text-red-500 text-start text-sm mt-2'>{errors.oPrice.message}</p>}
                 </div>
 
                 <div className="form-control w-full col-span-full sm:col-span-1">
                     <label className="label">
                         <span className="label-text text-base font-semibold">Resale Price</span>
                     </label>
-                    <input type="text" name='rPrice' placeholder="Resale Price" {...register("rPrice")} className="input input-bordered w-full" />
+                    <input type="text" name='rPrice' placeholder="Resale Price" {...register("rPrice",
+                        {
+                            required: 'Resale price is required',
+                        }
+                    )} className="input input-bordered w-full" />
+                    {errors.rPrice && <p className='text-red-500 text-start text-sm mt-2'>{errors.rPrice.message}</p>}
                 </div>
 
                 <div className="form-control w-full col-span-full sm:col-span-1">
@@ -188,14 +198,24 @@ const AddProduct = () => {
                     <label className="label">
                         <span className="label-text text-base font-semibold">Mobile</span>
                     </label>
-                    <input type="text" name='mobile' placeholder="Mobile" {...register("mobile")} className="input input-bordered w-full" />
+                    <input type="text" name='mobile' placeholder="Mobile" {...register("mobile",
+                        {
+                            required: 'Mobile field is required',
+                        }
+                    )} className="input input-bordered w-full" />
+                    {errors.mobile && <p className='text-red-500 text-start text-sm mt-2'>{errors.mobile.message}</p>}
                 </div>
 
                 <div className="form-control w-full col-span-full sm:col-span-1">
                     <label className="label">
                         <span className="label-text text-base font-semibold">Location</span>
                     </label>
-                    <input type="text" name='location' placeholder="Location" {...register("location")} className="input input-bordered w-full" />
+                    <input type="text" name='location' placeholder="Location" {...register("location",
+                        {
+                            required: 'location field is required',
+                        }
+                    )} className="input input-bordered w-full" />
+                    {errors.location && <p className='text-red-500 text-start text-sm mt-2'>{errors.location.message}</p>}
                 </div>
 
                 <div className="form-control col-span-full sm:col-span-1">
@@ -203,7 +223,12 @@ const AddProduct = () => {
                         <span className="label-text text-base font-semibold">Image</span>
                     </label>
                     <div className='form-control col-span-full sm:col-span-2'>
-                        <input type="file" name='image' {...register("img")} className="input input-bordered w-full py-2" />
+                        <input type="file" name='image' {...register("img",
+                            {
+                                required: 'product image is required',
+                            }
+                        )} className="input input-bordered w-full py-2" />
+                        {errors.img && <p className='text-red-500 text-start text-sm mt-2'>{errors.img.message}</p>}
                     </div>
                 </div>
 
@@ -211,7 +236,12 @@ const AddProduct = () => {
                     <label className="label">
                         <span className="label-text text-base font-semibold">Description</span>
                     </label>
-                    <textarea type="text" rows={5} name='description' placeholder="Description" {...register("description")} className="py-3 px-3 outline-none rounded-md" style={{ resize: 'none' }} />
+                    <textarea type="text" rows={5} name='description' placeholder="Description" {...register("description",
+                        {
+                            required: 'Product description is required',
+                        }
+                    )} className="py-3 px-3 outline-none rounded-md" style={{ resize: 'none' }} />
+                    {errors.description && <p className='text-red-500 text-start text-sm mt-2'>{errors.description.message}</p>}
                 </div>
 
                 <div className='lg:col-span-4 col-span-full flex justify-center'>

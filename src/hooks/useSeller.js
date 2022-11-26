@@ -15,7 +15,7 @@ const useSeller = email => {
             })
                 .then(data => {
                     console.log(data);
-                    setIsSeller(data.data.isAdmin);
+                    setIsSeller(data.data.isSeller);
                     setIsLoading(false);
                 })
         }

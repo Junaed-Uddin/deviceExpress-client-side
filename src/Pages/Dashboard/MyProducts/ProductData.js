@@ -71,7 +71,7 @@ const ProductData = ({ product, refetch }) => {
             <th>
                 {
                     status === 'available' ?
-                        <button onClick={() => handleAdvertisement(_id)} className={`btn btn-sm w-28 border-none rounded-sm text-white ${advertise === 'Advertised' ? 'bg-green-500 focus:bg-green-500' : 'bg-blue-500 focus:bg-blue-500'} `}>{advertise}</button>
+                        <button onClick={() => handleAdvertisement(_id)} className={`btn btn-sm w-28 border-none rounded-sm text-white ${advertise === 'Advertised' ? 'bg-green-500 hover:bg-green-500' : 'bg-blue-500 hover:bg-blue-500'} `}>{advertise}</button>
                         :
                         <button onClick={() => handleDelete(_id)} className="btn btn-sm w-28 border-none rounded-sm text-white bg-red-500">Delete</button>
                 }
