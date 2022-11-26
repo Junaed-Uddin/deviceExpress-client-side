@@ -2,10 +2,14 @@ import React, { useContext, useState } from 'react';
 import './Navbar.css';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthProvider } from '../../../Contexts/AuthContext';
+import useAdmin from '../../../hooks/useAdmin';
+import useSeller from '../../../hooks/useSeller';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthProvider);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isAdmin] = useAdmin(user?.email);
+    const [isSeller] = useSeller(user?.email);
 
     const handleLogOut = () => {
         logOut()
@@ -28,11 +32,21 @@ const Navbar = () => {
         {
             user?.uid ?
                 <>
-                    <li>
-                        <NavLink to='/dashboard/myOrders' className={`font-medium tracking-wide text-white ${({ isActive }) => isActive ? 'active' : undefined}`}>
-                            Dashboard
-                        </NavLink>
-                    </li>
+                    {
+                        !isAdmin && !isSeller ?
+                            <li>
+                                <NavLink to='/dashboard/myOrders' className={`font-medium tracking-wide text-white ${({ isActive }) => isActive ? 'active' : undefined}`}>
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                            :
+                            <li>
+                                <NavLink to={`/dashboard/${isAdmin ? 'allBuyers' : 'myProducts'}`} className={`font-medium tracking-wide text-white ${({ isActive }) => isActive ? 'active' : undefined}`}>
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                    }
+
                     <li>
                         <Link onClick={handleLogOut} className={`font-medium tracking-wide text-white ${({ isActive }) => isActive ? 'active' : undefined}`}>
                             Logout

@@ -41,6 +41,26 @@ const AllSellers = () => {
             })
     }
 
+    const handleVerified = id => {
+        fetch(`http://localhost:5000/users/seller/${id}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem("secretToken")}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.success) {
+                    toast.success(data.message);
+                    refetch();
+                }
+                else {
+                    toast.error(data.message);
+                }
+            })
+    }
+
     return (
         <div className='my-8'>
             <h2 className='text-3xl font-semibold'>All Sellers: {sellers.length}</h2>
@@ -61,7 +81,7 @@ const AllSellers = () => {
                                 <th>{i + 1}</th>
                                 <td>{seller.name}</td>
                                 <td>{seller.email}</td>
-                                <td><button className='btn rounded-sm bg-blue-500 hover:bg-blue-500 border-none text-white btn-sm'>Verify</button></td>
+                                <td><button onClick={() => handleVerified(seller._id)} className='btn rounded-sm bg-blue-500 hover:bg-blue-500 border-none text-white btn-sm'>Verify</button></td>
                                 <td><button onClick={() => handleSellerDelete(seller._id)} className='btn rounded-sm bg-red-500 hover:bg-red-500 border-none text-white btn-sm'>Delete</button></td>
                             </tr>)
                         }

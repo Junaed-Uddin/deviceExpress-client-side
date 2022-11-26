@@ -2,7 +2,7 @@ import React from 'react';
 import { MdVerifiedUser } from 'react-icons/md';
 
 const ProductCard = ({ product, setProductInfo }) => {
-    const { productName, image, original_price, resale_price, used_year, posted_time, seller_verified, location, description, purchaseYear, warrantee, sellers_name, mobile, condition, category_name } = product;
+    const { productName, image, original_price, resale_price, used_year, posted_time, verified, location, description, purchaseYear, warrantee, sellers_name, mobile, condition, category_name } = product;
 
     return (
         <>
@@ -13,7 +13,7 @@ const ProductCard = ({ product, setProductInfo }) => {
                     <div className='flex justify-between items-center'>
                         <p className='text-2xl font-bold'>{productName}</p>
                         <div className="flex items-center gap-1">
-                            <p className='text-blue-500'>{seller_verified ? <MdVerifiedUser></MdVerifiedUser> : ''}</p>
+                            <p className='text-blue-500'>{verified === 'yes' ? <MdVerifiedUser></MdVerifiedUser> : ''}</p>
                             <p className='text-base font-semibold'>Seller: {sellers_name}</p>
                         </div>
                     </div>
