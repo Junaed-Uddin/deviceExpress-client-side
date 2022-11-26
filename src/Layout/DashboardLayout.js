@@ -22,13 +22,16 @@ const DashboardLayout = () => {
                 <div className=" h-full w-full sm:h-screen p-3 space-y-2 sm:w-72 dark:bg-gray-900 dark:text-gray-100">
                     <div className="divide-y divide-gray-700">
                         <ul className="pt-2 pb-4 space-y-1 text-sm">
-                            <li className="dark:bg-gray-800 dark:text-gray-50">
 
-                                <NavLink to='/dashboard/myOrders' className="flex items-center p-2 space-x-3 rounded-md">
-                                    <p><BsCartCheck size={25}></BsCartCheck></p>
-                                    <span className='text-base'>My Orders</span>
-                                </NavLink>
-                            </li>
+                            {
+                                !isSeller && !isAdmin &&
+                                <li className="dark:bg-gray-800 dark:text-gray-50">
+                                    <NavLink to='/dashboard/myOrders' className="flex items-center p-2 space-x-3 rounded-md">
+                                        <p><BsCartCheck size={25}></BsCartCheck></p>
+                                        <span className='text-base'>My Orders</span>
+                                    </NavLink>
+                                </li>
+                            }
 
                             {
                                 isSeller &&

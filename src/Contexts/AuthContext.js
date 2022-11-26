@@ -27,6 +27,7 @@ const AuthContext = ({ children }) => {
     }
 
     const userLogin = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
@@ -42,9 +43,8 @@ const AuthContext = ({ children }) => {
             setLoading(false);
         })
 
-        return () => {
-            unsubscribe();
-        }
+        return () => unsubscribe();
+
     }, [])
 
     const authInfo = {

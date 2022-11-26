@@ -4,14 +4,14 @@ import { AuthProvider } from '../../../Contexts/AuthContext';
 
 const BookingModal = ({ productInfo, setProductInfo }) => {
     const { user } = useContext(AuthProvider);
-    const { category_name, name, image, resale_price } = productInfo;
+    const { category_name, productName, image, resale_price } = productInfo;
 
     const handleSubmit = e => {
         e.preventDefault();
         const form = e.target;
         const bookingOrder = {
             brand: category_name,
-            productName: name,
+            productName: productName,
             resalePrice: resale_price,
             image,
             name: user?.displayName,
@@ -25,7 +25,8 @@ const BookingModal = ({ productInfo, setProductInfo }) => {
         fetch('http://localhost:5000/booking', {
             method: 'POST',
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
+                authorization: `bearer ${localStorage.getItem("secretToken")}`
             },
             body: JSON.stringify(bookingOrder)
         })
@@ -53,7 +54,7 @@ const BookingModal = ({ productInfo, setProductInfo }) => {
                     <form onSubmit={handleSubmit} className='mt-5'>
                         <div className='flex items-center gap-3 w-full'>
                             <label htmlFor="category" className='w-24'>Product: </label>
-                            <input name='category' disabled defaultValue={name} type="text" className="input input-bordered input-black w-full my-2" />
+                            <input name='category' disabled defaultValue={productName} type="text" className="input input-bordered input-black w-full my-2" />
                         </div>
 
                         <div className='flex items-center gap-3 w-full'>
