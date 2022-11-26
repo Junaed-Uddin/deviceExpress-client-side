@@ -6,7 +6,7 @@ const ProductData = ({ product, refetch }) => {
     const [advertise, setAdvertise] = useState('Advertise')
 
     const handleAdvertisement = id => {
-        fetch(`http://localhost:5000/users/seller/${id}`, {
+        fetch(`http://localhost:5000/productAdvertise/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem("secretToken")}`
@@ -27,7 +27,7 @@ const ProductData = ({ product, refetch }) => {
     }
 
     const handleDelete = id => {
-        fetch(`http://localhost:5000/users/seller/${id}`, {
+        fetch(`http://localhost:5000/soldProduct/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem("secretToken")}`

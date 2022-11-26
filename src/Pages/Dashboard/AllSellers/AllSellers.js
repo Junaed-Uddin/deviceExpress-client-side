@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import Loader from '../../../Components/Loader/Loader';
+import { AuthProvider } from '../../../Contexts/AuthContext';
 
 const AllSellers = () => {
     const { data: sellers = [], isLoading, refetch } = useQuery({
@@ -13,6 +14,7 @@ const AllSellers = () => {
                 }
             });
             const data = await res.json();
+            console.log(data);
             return data.data;
         }
     })
@@ -22,7 +24,7 @@ const AllSellers = () => {
     }
 
     const handleSellerDelete = id => {
-        fetch(`http://localhost:5000/users/seller/${id}`, {
+        fetch(`http://localhost:5000/deleteSellers/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('secretToken')}`
@@ -41,8 +43,8 @@ const AllSellers = () => {
             })
     }
 
-    const handleVerified = id => {
-        fetch(`http://localhost:5000/users/seller/${id}`, {
+    const handleVerified = (email) => {
+        fetch(`http://localhost:5000/userVerified/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem("secretToken")}`
@@ -71,7 +73,7 @@ const AllSellers = () => {
                             <th className='text-sm'>Serial</th>
                             <th className='text-sm'>Name</th>
                             <th className='text-sm'>Email</th>
-                            <th className='text-sm'>Verify</th>
+                            <th className='text-sm'>Status</th>
                             <th className='text-sm'>Action</th>
                         </tr>
                     </thead>
@@ -81,7 +83,16 @@ const AllSellers = () => {
                                 <th>{i + 1}</th>
                                 <td>{seller.name}</td>
                                 <td>{seller.email}</td>
-                                <td><button onClick={() => handleVerified(seller._id)} className='btn rounded-sm bg-blue-500 hover:bg-blue-500 border-none text-white btn-sm'>Verify</button></td>
+
+                                <td>
+                                    {
+                                        seller.verified !== 'yes' ?
+                                            <button onClick={() => handleVerified(seller.email)} className='btn rounded-sm bg-red-700 hover:bg-red-500 border-none text-white btn-xs'>Unverified</button>
+                                            :
+                                            <span className='rounded-sm bg-green-500 hover:bg-green-500 border-none text-white btn-sm'>Verified</span>
+                                    }
+                                </td>
+
                                 <td><button onClick={() => handleSellerDelete(seller._id)} className='btn rounded-sm bg-red-500 hover:bg-red-500 border-none text-white btn-sm'>Delete</button></td>
                             </tr>)
                         }

@@ -67,6 +67,12 @@ const DashboardLayout = () => {
                                             <span className='text-base'>All Sellers</span>
                                         </NavLink>
                                     </li>
+                                    <li>
+                                        <NavLink to='/dashboard/reportedItems' className="flex items-center p-2 space-x-3 rounded-md">
+                                            <p><MdOutlineSell size={25}></MdOutlineSell></p>
+                                            <span className='text-base'>Reported Items</span>
+                                        </NavLink>
+                                    </li>
                                 </>
                             }
 

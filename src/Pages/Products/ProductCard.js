@@ -1,8 +1,42 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 import { MdVerifiedUser } from 'react-icons/md';
 
 const ProductCard = ({ product, setProductInfo }) => {
-    const { productName, image, original_price, resale_price, used_year, posted_time, verified, location, description, purchaseYear, warrantee, sellers_name, mobile, condition, category_name } = product;
+    const { _id, productName, image, original_price, resale_price, used_year, posted_time, verified, location, description, purchaseYear, warrantee, sellers_name, mobile, status, condition, category_name } = product;
+
+    const handleReportProduct = () => {
+        const reportedItems = {
+            productId: _id,
+            productName,
+            image,
+            warrantee,
+            condition,
+            resale_price,
+            category_name,
+            status
+        }
+
+        fetch('http://localhost:5000/reportItems', {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json",
+                authorization: `bearer ${localStorage.getItem("secretToken")}`
+            },
+            body: JSON.stringify(reportedItems)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.success) {
+                    toast.success(data.message)
+                }
+                else {
+                    toast.error(data.error);
+                }
+            })
+    }
+
 
     return (
         <>
@@ -34,9 +68,12 @@ const ProductCard = ({ product, setProductInfo }) => {
                         <li className='text-sm text-gray-700'>Mobile: {mobile}</li>
                     </ul>
 
-                    <div className="card-actions justify-between items-center mt-5">
+                    <div className="flex justify-between items-center mt-5">
                         <label onClick={() => setProductInfo(product)} htmlFor="booking-modal" className="btn border-none px-3 bg-gradient-to-r from-indigo-400 to-purple-500 text-white rounded font-semibold">Purchase Now</label>
-                        <div className='badge badge-secondary font-semibold'>{posted_time}</div>
+                        <div className='flex flex-col gap-2 items-end'>
+                            <span className='badge badge-secondary rounded-sm font-semibold'>{posted_time}</span>
+                            <button onClick={handleReportProduct} className='btn btn-xs border-none bg-red-500 text-white text-sm w-[70px] rounded-sm'>Report</button>
+                        </div>
                     </div>
                 </div>
             </div>

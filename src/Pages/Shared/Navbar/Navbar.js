@@ -41,7 +41,7 @@ const Navbar = () => {
                             </li>
                             :
                             <li>
-                                <NavLink to={`/dashboard/${isAdmin ? 'allBuyers' : 'myProducts'}`} className={`font-medium tracking-wide text-white ${({ isActive }) => isActive ? 'active' : undefined}`}>
+                                <NavLink to={`/dashboard/${isAdmin ? 'allBuyers' : 'addProducts'}`} className={`font-medium tracking-wide text-white ${({ isActive }) => isActive ? 'active' : undefined}`}>
                                     Dashboard
                                 </NavLink>
                             </li>
