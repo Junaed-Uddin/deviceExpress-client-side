@@ -25,7 +25,7 @@ const AddProduct = () => {
         }
     })
 
-    if(isLoading){
+    if (isLoading) {
         return <Loader></Loader>
     }
 
@@ -42,6 +42,7 @@ const AddProduct = () => {
                 if (imageData.success) {
                     const productInfo = {
                         sellers_name: user?.displayName,
+                        email: user?.email,
                         productName: data.name,
                         original_price: data.oPrice,
                         resale_price: data.rPrice,
@@ -54,7 +55,8 @@ const AddProduct = () => {
                         location: data.location,
                         category_name: data.brand,
                         description: data.description,
-                        image: imageData.data.url
+                        image: imageData.data.url,
+                        status: 'available'
                     }
 
                     console.log(productInfo);
@@ -79,7 +81,7 @@ const AddProduct = () => {
     }
 
     return (
-        <div className='w-full my-5'>
+        <div className='w-full my-7'>
             <h2 className='text-3xl font-semibold'>Add Products</h2>
 
             <form onSubmit={handleSubmit(handleProduct)} className='bg-gray-200 p-5 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mt-5 w-full'>

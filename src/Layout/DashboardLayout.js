@@ -8,10 +8,12 @@ import { NavLink, Outlet } from 'react-router-dom';
 import Navbar from '../Pages/Shared/Navbar/Navbar';
 import useAdmin from '../hooks/useAdmin';
 import { AuthProvider } from '../Contexts/AuthContext';
+import useSeller from '../hooks/useSeller';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthProvider);
     const [isAdmin] = useAdmin(user?.email);
+    const [isSeller] = useSeller(user?.email);
 
     return (
         <div className='w-full'>
@@ -28,19 +30,24 @@ const DashboardLayout = () => {
                                 </NavLink>
                             </li>
 
-                            <li>
-                                <NavLink to='/dashboard/addProducts' className="flex items-center p-2 space-x-3 rounded-md">
-                                    <p><IoIosAddCircleOutline size={25}></IoIosAddCircleOutline></p>
-                                    <span className='text-base'>Add Products</span>
-                                </NavLink>
-                            </li>
+                            {
+                                isSeller &&
+                                <>
+                                    <li>
+                                        <NavLink to='/dashboard/addProducts' className="flex items-center p-2 space-x-3 rounded-md">
+                                            <p><IoIosAddCircleOutline size={25}></IoIosAddCircleOutline></p>
+                                            <span className='text-base'>Add Products</span>
+                                        </NavLink>
+                                    </li>
 
-                            <li>
-                                <NavLink to='/dashboard/myProducts' className="flex items-center p-2 space-x-3 rounded-md">
-                                    <p><GiShoppingBag size={25}></GiShoppingBag></p>
-                                    <span className='text-base'>My Products</span>
-                                </NavLink>
-                            </li>
+                                    <li>
+                                        <NavLink to='/dashboard/myProducts' className="flex items-center p-2 space-x-3 rounded-md">
+                                            <p><GiShoppingBag size={25}></GiShoppingBag></p>
+                                            <span className='text-base'>My Products</span>
+                                        </NavLink>
+                                    </li>
+                                </>
+                            }
 
                             {
                                 isAdmin &&
