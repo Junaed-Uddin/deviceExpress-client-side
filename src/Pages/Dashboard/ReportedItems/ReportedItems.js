@@ -45,7 +45,7 @@ const ReportedItems = () => {
                     <thead>
                         <tr>
                             <th className='text-sm'>Image</th>
-                            <th className='text-sm'>Seller Name</th>
+                            <th className='text-sm'>Reporter Name</th>
                             <th className='text-sm'>Product Name</th>
                             <th className='text-sm'>Price</th>
                             <th className='text-sm'>Warrantee</th>
@@ -66,7 +66,7 @@ const ReportedItems = () => {
                                     </div>
                                 </td>
 
-                                <td>{reportItem.sellers_name}</td>
+                                <td>{reportItem.reporterName}</td>
                                 <td>
                                     <div>
                                         <div className="font-bold">{reportItem.productName}</div>

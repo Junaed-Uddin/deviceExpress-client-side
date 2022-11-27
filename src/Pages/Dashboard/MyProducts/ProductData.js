@@ -1,5 +1,6 @@
 import React from 'react';
 import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
 
 const ProductData = ({ product, refetch }) => {
     const { _id, image, productName, display, resale_price, posted_time, category_name, status } = product;
@@ -31,24 +32,44 @@ const ProductData = ({ product, refetch }) => {
     }
 
     const handleDelete = id => {
-        fetch(`http://localhost:5000/soldProduct/${id}`, {
-            method: 'DELETE',
-            headers: {
-                authorization: `bearer ${localStorage.getItem("secretToken")}`
+
+        Swal.fire({
+            title: 'Are you want to delete this?',
+            text: "It can't be undone!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Confirm'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/soldProduct/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        authorization: `bearer ${localStorage.getItem("secretToken")}`
+                    }
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.success) {
+                            toast.success(data.message);
+                            refetch();
+                        }
+                        else {
+                            toast.error(data.message);
+                        }
+                    })
+
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
             }
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.success) {
-                    toast.success(data.message);
-                    refetch();
-                }
-                else {
-                    toast.error(data.message);
-                }
-            })
     }
+    
 
     return (
         <tr>

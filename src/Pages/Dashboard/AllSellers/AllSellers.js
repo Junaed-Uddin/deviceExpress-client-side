@@ -1,8 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import Swal from 'sweetalert2';
 import toast from 'react-hot-toast';
 import Loader from '../../../Components/Loader/Loader';
-import { AuthProvider } from '../../../Contexts/AuthContext';
 
 const AllSellers = () => {
     const { data: sellers = [], isLoading, refetch } = useQuery({
@@ -24,23 +23,44 @@ const AllSellers = () => {
     }
 
     const handleSellerDelete = id => {
-        fetch(`http://localhost:5000/deleteSellers/${id}`, {
-            method: 'DELETE',
-            headers: {
-                authorization: `bearer ${localStorage.getItem('secretToken')}`
+
+        Swal.fire({
+            title: 'Are you want to delete this?',
+            text: "It can't be undone!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Confirm'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                fetch(`http://localhost:5000/deleteSellers/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        authorization: `bearer ${localStorage.getItem('secretToken')}`
+                    }
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.success) {
+                            toast.success(data.message);
+                            refetch();
+                        }
+                        else {
+                            toast.error(data.message)
+                        }
+                    })
+
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
             }
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.success) {
-                    toast.success(data.message);
-                    refetch();
-                }
-                else {
-                    toast.error(data.message)
-                }
-            })
+
     }
 
     const handleVerified = (email) => {
@@ -89,7 +109,7 @@ const AllSellers = () => {
                                         seller.verified !== 'yes' ?
                                             <button onClick={() => handleVerified(seller.email)} className='btn rounded-sm bg-red-700 hover:bg-red-500 border-none text-white btn-xs'>Unverified</button>
                                             :
-                                            <span className='rounded-sm bg-green-500 hover:bg-green-500 border-none text-white btn-sm'>Verified</span>
+                                            <button onClick={() => handleVerified(seller.email)} className='rounded-sm bg-green-500 hover:bg-green-500 border-none text-white btn-sm'>Verified</button>
                                     }
                                 </td>
 

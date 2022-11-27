@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { MdVerifiedUser } from 'react-icons/md';
+import { AuthProvider } from '../../Contexts/AuthContext';
+import useAdmin from '../../hooks/useAdmin';
+import useSeller from '../../hooks/useSeller';
 
 const ProductCard = ({ product, setProductInfo }) => {
+    const { user } = useContext(AuthProvider);
+    const [isAdmin] = useAdmin(user?.email);
+    const [isSeller] = useSeller(user?.email);
+
     const { _id, productName, image, original_price, resale_price, used_year, posted_time, verified, location, description, purchaseYear, warrantee, sellers_name, mobile, reported, condition, category_name } = product;
 
     const handleReportProduct = () => {
         const reportedItems = {
             productId: _id,
-            sellers_name,
+            reporterName: user?.displayName,
             productName,
             image,
             warrantee,
@@ -73,7 +80,10 @@ const ProductCard = ({ product, setProductInfo }) => {
                     </ul>
 
                     <div className="flex justify-between items-center mt-5">
-                        <label onClick={() => setProductInfo(product)} htmlFor="booking-modal" className="btn border-none px-3 bg-gradient-to-r from-indigo-400 to-purple-500 text-white rounded font-semibold">Purchase Now</label>
+
+                        <label onClick={() => setProductInfo(product)} disabled={isAdmin || isSeller} htmlFor="booking-modal" className="btn border-none px-3 bg-gradient-to-r from-indigo-400 to-purple-500 text-white rounded font-semibold">Book Now</label>
+
+
                         <div className='flex flex-col gap-2 items-end'>
                             <span className='badge badge-secondary rounded-sm font-semibold'>{posted_time}</span>
                             {reported !== 'yes' ?
