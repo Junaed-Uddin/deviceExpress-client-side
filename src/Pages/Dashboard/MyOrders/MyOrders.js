@@ -32,8 +32,10 @@ const MyOrders = () => {
                     <thead>
                         <tr>
                             <th></th>
+                            <th className='text-sm'>Buyer Name</th>
                             <th className='text-sm'>Product Image</th>
                             <th className='text-sm'>Product Name</th>
+                            <th className='text-sm'>Warrantee</th>
                             <th className='text-sm'>Price</th>
                             <th className='text-sm'>Payment</th>
                         </tr>
