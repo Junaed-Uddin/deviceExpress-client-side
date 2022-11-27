@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { BsCartCheck } from 'react-icons/bs';
 import { GiShoppingBag } from 'react-icons/gi';
+import { GoReport } from 'react-icons/go';
 import { IoIosAddCircleOutline } from 'react-icons/io';
 import { ImUsers } from 'react-icons/im';
 import { MdOutlineSell } from 'react-icons/md';
@@ -69,7 +70,7 @@ const DashboardLayout = () => {
                                     </li>
                                     <li>
                                         <NavLink to='/dashboard/reportedItems' className="flex items-center p-2 space-x-3 rounded-md">
-                                            <p><MdOutlineSell size={25}></MdOutlineSell></p>
+                                            <p><GoReport size={25}></GoReport></p>
                                             <span className='text-base'>Reported Items</span>
                                         </NavLink>
                                     </li>

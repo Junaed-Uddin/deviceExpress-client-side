@@ -45,11 +45,11 @@ const ReportedItems = () => {
                     <thead>
                         <tr>
                             <th className='text-sm'>Image</th>
-                            <th className='text-sm'>Name</th>
+                            <th className='text-sm'>Seller Name</th>
+                            <th className='text-sm'>Product Name</th>
                             <th className='text-sm'>Price</th>
                             <th className='text-sm'>Warrantee</th>
                             <th className='text-sm'>Condition</th>
-                            <th className='text-sm'>Status</th>
                             <th className='text-sm'>Action</th>
                         </tr>
                     </thead>
@@ -65,17 +65,21 @@ const ReportedItems = () => {
                                         </div>
                                     </div>
                                 </td>
-                                <td><div>
-                                    <div className="font-bold">{reportItem.productName}</div>
-                                    <div className="text-sm opacity-50">{reportItem.category_name}</div>
-                                </div></td>
+
+                                <td>{reportItem.sellers_name}</td>
+                                <td>
+                                    <div>
+                                        <div className="font-bold">{reportItem.productName}</div>
+                                        <div className="text-sm opacity-50">{reportItem.category_name}</div>
+                                    </div>
+                                </td>
+
                                 <td>{reportItem.resale_price} BDT</td>
                                 <td>{reportItem.warrantee}</td>
                                 <td>{reportItem.condition}</td>
-                                <td>{reportItem.status}</td>
-                                <th>
+                                <td>
                                     <button onClick={() => handleDelete(reportItem._id)} className="btn bg-red-500 text-white rounded-sm btn-sm border-none">Delete</button>
-                                </th>
+                                </td>
                             </tr>)
                         }
                     </tbody>

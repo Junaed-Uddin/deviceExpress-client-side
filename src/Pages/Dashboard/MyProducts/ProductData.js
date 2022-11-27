@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import toast from 'react-hot-toast';
 
 const ProductData = ({ product, refetch }) => {
-    const { _id, image, productName, resale_price, posted_time, category_name, status } = product;
-    const [advertise, setAdvertise] = useState('Advertise')
+    const { _id, image, productName, display, resale_price, posted_time, category_name, status } = product;
+
 
     const handleAdvertisement = id => {
+
+        if (display === 'advertise') {
+            return toast.error('Already Advertised');
+        }
+
         fetch(`http://localhost:5000/productAdvertise/${id}`, {
             method: 'PUT',
             headers: {
@@ -17,7 +22,6 @@ const ProductData = ({ product, refetch }) => {
                 console.log(data);
                 if (data.success) {
                     toast.success(data.message);
-                    setAdvertise('Advertised')
                     refetch();
                 }
                 else {
@@ -71,7 +75,7 @@ const ProductData = ({ product, refetch }) => {
             <th>
                 {
                     status === 'available' ?
-                        <button onClick={() => handleAdvertisement(_id)} className={`btn btn-sm w-28 border-none rounded-sm text-white ${advertise === 'Advertised' ? 'bg-green-500 hover:bg-green-500' : 'bg-blue-500 hover:bg-blue-500'} `}>{advertise}</button>
+                        <button onClick={() => handleAdvertisement(_id)} className={`btn btn-sm w-28 border-none rounded-sm text-white ${display === 'advertise' ? 'bg-green-500 hover:bg-green-500' : 'bg-blue-500 hover:bg-blue-500'} `}>{`${display === 'advertise' ? 'Advertised' : 'Advertise'}`}</button>
                         :
                         <button onClick={() => handleDelete(_id)} className="btn btn-sm w-28 border-none rounded-sm text-white bg-red-500">Delete</button>
                 }
