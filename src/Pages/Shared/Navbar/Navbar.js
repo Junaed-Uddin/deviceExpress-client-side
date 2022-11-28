@@ -1,9 +1,13 @@
+import { Tooltip } from '@material-tailwind/react';
 import React, { useContext, useState } from 'react';
 import './Navbar.css';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthProvider } from '../../../Contexts/AuthContext';
 import useAdmin from '../../../hooks/useAdmin';
 import useSeller from '../../../hooks/useSeller';
+import laptop from '../../../assets/logo/laptop.png';
+import userImg from '../../../assets/user/userImg.jpg';
+
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthProvider);
@@ -52,11 +56,22 @@ const Navbar = () => {
                             </li>
                     }
 
-                    <li>
-                        <Link onClick={handleLogOut} className={`font-medium tracking-wide text-white ${({ isActive }) => isActive ? 'active' : undefined}`}>
-                            Logout
-                        </Link>
-                    </li>
+                    <div className='flex items-center gap-4 sm:px-2'>
+                        <li>
+                            <NavLink>
+                                <Tooltip className='text-amber-500 font-bold ' content={user?.displayName ? user?.displayName : "Anonymous"} placement="bottom">
+                                    <img className='rounded-full border' style={{ height: '4   8px', width: '50px' }} src={user?.photoURL ? user.photoURL : userImg} referrerPolicy='no-referrer' alt="" />
+                                </Tooltip>
+                            </NavLink>
+                        </li>
+
+                        <li>
+                            <Link onClick={handleLogOut} className={`font-medium tracking-wide text-white ${({ isActive }) => isActive ? 'active' : undefined}`}>
+                                Logout
+                            </Link>
+                        </li>
+
+                    </div>
                 </>
                 :
                 <li>
@@ -69,25 +84,13 @@ const Navbar = () => {
     </React.Fragment>
 
     return (
-        <div className="bg-gray-900">
+        <div className="bg-gray-800 shadow-2xl">
             <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                 <div className="relative flex items-center justify-between">
                     <Link to="/" className="inline-flex items-center">
-                        <svg
-                            className="w-8 text-teal-accent-400"
-                            viewBox="0 0 24 24"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeMiterlimit="10"
-                            stroke="currentColor"
-                            fill="none"
-                        >
-                            <rect x="3" y="1" width="7" height="12" />
-                            <rect x="3" y="17" width="7" height="6" />
-                            <rect x="14" y="1" width="7" height="6" />
-                            <rect x="14" y="11" width="7" height="12" />
-                        </svg>
+                        <div className="flex items-center justify-center hidden sm:flex w-12 h-12 rounded-full dark:bg-white">
+                            <img src={laptop} alt="logo" />
+                        </div>
                         <span className="ml-2 text-2xl font-bold tracking-wide text-violet-500">
                             DeviceExpress
                         </span>
@@ -133,8 +136,8 @@ const Navbar = () => {
                                             </button>
                                         </div>
                                     </div>
-                                    <nav className='flex justify-start'>
-                                        <ul className="space-y-4
+                                    <nav className='flex justify-center'>
+                                        <ul className="space-y-4 text-center mb-2
                                         ">
                                             {menuItem}
                                         </ul>

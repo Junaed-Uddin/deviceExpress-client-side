@@ -51,11 +51,11 @@ const ProductCard = ({ product, setProductInfo }) => {
 
     return (
         <>
-            <div className="card bg-white shadow-2xl rounded-sm h-full">
-                <figure className='h-full'><img src={image} className='h-full w-full object-cover' alt="productImage" /></figure>
+            <div className="card bg-white shadow-2xl rounded-lg h-full">
+                <figure className='h-full'><img src={image} className='h-72 w-72' alt="productImage" /></figure>
                 <div className="card-body">
 
-                    <div className='flex justify-between items-center'>
+                    <div className='flex flex-wrap gap-3 xl:gap-0 justify-between items-center'>
                         <p className='text-2xl font-bold'>{productName}</p>
                         <div className="flex items-center gap-1">
                             <p className='text-blue-500'>{verified === 'yes' ? <MdVerifiedUser></MdVerifiedUser> : ''}</p>
@@ -79,13 +79,13 @@ const ProductCard = ({ product, setProductInfo }) => {
                         <li className='text-sm text-gray-700'>Mobile: {mobile}</li>
                     </ul>
 
-                    <div className="flex justify-between items-center mt-5">
+                    <div className="flex flex-wrap flex-col xl:flex-row gap-3 justify-between items-center mt-5">
 
-                        <label onClick={() => setProductInfo(product)} disabled={isAdmin || isSeller} htmlFor="booking-modal" className="btn border-none px-3 bg-gradient-to-r from-indigo-400 to-purple-500 text-white rounded font-semibold">Book Now</label>
+                        <label onClick={() => setProductInfo(product)} disabled={isAdmin || isSeller} htmlFor="booking-modal" className="btn border-none px-3 bg-gradient-to-r from-indigo-400 to-purple-500 text-white rounded font-semibold w-full xl:w-[150px]">Book Now</label>
 
 
-                        <div className='flex flex-col gap-2 items-end'>
-                            <span className='badge badge-secondary rounded-sm font-semibold'>{posted_time}</span>
+                        <div className='flex xl:flex-col gap-4 xl:gap-0 xl:items-end'>
+                            <span className='badge mb-2 badge-secondary h-6 rounded-sm font-semibold'>{posted_time}</span>
                             {reported !== 'yes' ?
                                 <button onClick={handleReportProduct} className='btn btn-xs border-none bg-blue-500 text-white text-sm w-[70px] rounded-sm'>Report</button>
                                 :

@@ -6,11 +6,11 @@ const FeaturedBrand = ({ category }) => {
 
     return (
         <section>
-            <div className="card bg-base-100 shadow-2xl rounded-none">
+            <div className="card bg-white shadow-2xl rounded-lg">
                 <Link to={`/category/${name}`}>
-                    <figure><img className='h-64 object-cover w-full object-center' src={image} alt="laptop" /></figure>
+                    <figure><img className='h-60 w-64' src={image} alt="laptop" /></figure>
                 </Link>
-                <div className="py-3">
+                <div className="py-3 bg-gray-100">
                     <h2 className="text-xl font-bold text-center">
                         <Link to={`/category/${name}`}>{name}</Link>
                     </h2>
