@@ -52,9 +52,8 @@ const ProductCard = ({ product, setProductInfo }) => {
     return (
         <>
             <div className="card bg-white shadow-2xl rounded-lg h-full">
-                <figure className='h-full'><img src={image} className='h-72 w-72' alt="productImage" /></figure>
-                <div className="card-body">
-
+                <figure className='h-full'><img src={image} className='h-72 w-full' alt="productImage" /></figure>
+                <div className="card-body bg-gray-100">
                     <div className='flex flex-wrap gap-3 xl:gap-0 justify-between items-center'>
                         <p className='text-2xl font-bold'>{productName}</p>
                         <div className="flex items-center gap-1">

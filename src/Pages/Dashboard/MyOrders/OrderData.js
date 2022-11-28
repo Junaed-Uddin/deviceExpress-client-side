@@ -8,9 +8,6 @@ const OrderData = ({ order }) => {
         <tr>
             <th></th>
             <td>
-                {name}
-            </td>
-            <td>
                 <div className="flex items-center space-x-3">
                     <div className="avatar">
                         <div className="rounded w-28">
@@ -25,10 +22,13 @@ const OrderData = ({ order }) => {
                 </div>
             </td>
             <td>
+                {name}
+            </td>
+            <td>
                 {warrantee}
             </td>
             <td>
-                {resalePrice}
+                {resalePrice} BDT
             </td>
             <td>
                 {order.resalePrice && !order.paid ? <Link to={`/dashboard/payment/${_id}`}><button className="btn bg-red-500 text-white border-none">Pay</button></Link> :

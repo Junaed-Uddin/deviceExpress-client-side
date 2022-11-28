@@ -40,51 +40,53 @@ const ReportedItems = () => {
     return (
         <div className='my-8'>
             <h2 className='text-3xl font-semibold'>Reported Items: {reportedItems.length}</h2>
-            <div className="overflow-x-auto w-full mt-5">
-                <table className="table w-full">
-                    <thead>
-                        <tr>
-                            <th className='text-sm'>Image</th>
-                            <th className='text-sm'>Reporter Name</th>
-                            <th className='text-sm'>Product Name</th>
-                            <th className='text-sm'>Price</th>
-                            <th className='text-sm'>Warrantee</th>
-                            <th className='text-sm'>Condition</th>
-                            <th className='text-sm'>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            reportedItems.map(reportItem => <tr key={reportItem._id}>
-                                <td>
-                                    <div className="flex items-center space-x-3">
-                                        <div className="avatar">
-                                            <div className="w-24 rounded">
-                                                <img src={reportItem.image} alt='productImage' />
+            {reportedItems.length > 0 &&
+                <div className="overflow-x-auto w-full mt-5">
+                    <table className="table w-full">
+                        <thead>
+                            <tr>
+                                <th className='text-sm'>Image</th>
+                                <th className='text-sm'>Reporter Name</th>
+                                <th className='text-sm'>Product Name</th>
+                                <th className='text-sm'>Price</th>
+                                <th className='text-sm'>Warrantee</th>
+                                <th className='text-sm'>Condition</th>
+                                <th className='text-sm'>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                reportedItems.map(reportItem => <tr key={reportItem._id}>
+                                    <td>
+                                        <div className="flex items-center space-x-3">
+                                            <div className="avatar">
+                                                <div className="w-24 rounded">
+                                                    <img src={reportItem.image} alt='productImage' />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
+                                    </td>
 
-                                <td>{reportItem.reporterName}</td>
-                                <td>
-                                    <div>
-                                        <div className="font-bold">{reportItem.productName}</div>
-                                        <div className="text-sm opacity-50">{reportItem.category_name}</div>
-                                    </div>
-                                </td>
+                                    <td>{reportItem.reporterName}</td>
+                                    <td>
+                                        <div>
+                                            <div className="font-bold">{reportItem.productName}</div>
+                                            <div className="text-sm opacity-50">{reportItem.category_name}</div>
+                                        </div>
+                                    </td>
 
-                                <td>{reportItem.resale_price} BDT</td>
-                                <td>{reportItem.warrantee}</td>
-                                <td>{reportItem.condition}</td>
-                                <td>
-                                    <button onClick={() => handleDelete(reportItem._id)} className="btn bg-red-500 text-white rounded-sm btn-sm border-none">Delete</button>
-                                </td>
-                            </tr>)
-                        }
-                    </tbody>
-                </table>
-            </div>
+                                    <td>{reportItem.resale_price} BDT</td>
+                                    <td>{reportItem.warrantee}</td>
+                                    <td>{reportItem.condition}</td>
+                                    <td>
+                                        <button onClick={() => handleDelete(reportItem._id)} className="btn bg-red-500 text-white rounded-sm btn-sm border-none">Delete</button>
+                                    </td>
+                                </tr>)
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
         </div>
     );
 };

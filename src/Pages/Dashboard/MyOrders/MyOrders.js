@@ -11,7 +11,7 @@ const MyOrders = () => {
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/booking?email=${user?.email}`, {
                 headers: {
-                    authorization:`bearer ${localStorage.getItem('secretToken')}`
+                    authorization: `bearer ${localStorage.getItem('secretToken')}`
                 }
             });
             const data = await res.json();
@@ -27,29 +27,31 @@ const MyOrders = () => {
         <div className='my-7'>
             <h2 className='text-3xl font-semibold'>Total Orders: {orders.length}</h2>
 
-            <div className="overflow-x-auto w-full mt-5">
-                <table className="table w-full">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th className='text-sm'>Buyer Name</th>
-                            <th className='text-sm'>Product Image</th>
-                            <th className='text-sm'>Product Name</th>
-                            <th className='text-sm'>Warrantee</th>
-                            <th className='text-sm'>Price</th>
-                            <th className='text-sm'>Payment</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            orders.map(order => <OrderData
-                                key={order._id}
-                                order={order}
-                            ></OrderData>)
-                        }
-                    </tbody>
-                </table>
-            </div>
+            {orders.length > 0 &&
+                <div className="overflow-x-auto w-full mt-5">
+                    <table className="table w-full">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th className='text-sm'>Product Image</th>
+                                <th className='text-sm'>Product Name</th>
+                                <th className='text-sm'>Buyer Name</th>
+                                <th className='text-sm'>Warrantee</th>
+                                <th className='text-sm'>Price</th>
+                                <th className='text-sm'>Payment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                orders.map(order => <OrderData
+                                    key={order._id}
+                                    order={order}
+                                ></OrderData>)
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
         </div>
     );
 };
