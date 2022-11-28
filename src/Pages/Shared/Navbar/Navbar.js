@@ -24,6 +24,11 @@ const Navbar = () => {
             </NavLink>
         </li>
         <li>
+            <NavLink to="/blog" className={`font-medium tracking-wide text-white ${({ isActive }) => isActive ? 'active' : undefined}`}>
+                Blogs
+            </NavLink>
+        </li>
+        <li>
             <NavLink to="/contact" className={`font-medium tracking-wide text-white ${({ isActive }) => isActive ? 'active' : undefined}`}>
                 Contact
             </NavLink>
