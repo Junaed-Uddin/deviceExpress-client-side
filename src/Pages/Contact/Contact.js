@@ -5,8 +5,8 @@ import { AiTwotoneMail } from 'react-icons/ai';
 const Contact = () => {
     return (
         <div>
-            <div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 py-16 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 dark:bg-gray-100 dark:text-gray-900">
-                <div className="flex flex-col bg-blue-700 p-14 text-white">
+            <div className="grid max-w-screen-xl grid-cols-1 gap-8 px-2 sm:px-8 py-16 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 dark:bg-gray-100 dark:text-gray-900">
+                <div className="flex flex-col bg-blue-700 p-8 sm:p-14 text-white">
                     <div className="space-y-5">
                         <h2 className="text-4xl font-bold leading-tight lg:text-5xl">Get in Touch</h2>
                         <div className="">
@@ -21,7 +21,7 @@ const Contact = () => {
                         <p>545, Street 11, Block F Dean Boulevard, New York, USA </p>
                     </div>
                 </div>
-                <form className="space-y-6 bg-white p-10 w-full">
+                <form className="space-y-6 bg-white py-7 px-4 sm:p-10 w-full">
                     <div>
                         <label htmlFor="name" className="text-sm font-semibold">Full Name</label>
                         <input id="name" type="text" placeholder="" className="w-full border-2 border-gray-400 p-3 rounded dark:bg-gray-100" />
