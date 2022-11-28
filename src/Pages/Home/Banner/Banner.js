@@ -1,68 +1,68 @@
 import React from 'react';
-import laptop1 from '../../../assets/banner/laptop1.jpg';
-import laptop2 from '../../../assets/banner/laptop2.jpg';
-import laptop3 from '../../../assets/banner/laptop3.jpg';
+import laptop21 from '../../../assets/banner/laptop21.jpg';
+import { FaShippingFast } from 'react-icons/fa';
+import { MdOutlinePayments } from 'react-icons/md';
+import { AiOutlineSchedule } from 'react-icons/ai';
 
 const Banner = () => {
-    const imageSlider = [
-        {
-            id: 1,
-            image: laptop1,
-            title: 'Sell your used laptop for quick cash',
-            blog: 'Select your device below to get the best offer instantly!',
-            class: 'active'
-        },
-        {
-            id: 2,
-            image: laptop2,
-            title: 'Get paid to recycle your gadgets',
-            blog: 'Book a free pickup from your home or work at a time slot as per your convenience'
-        },
-        {
-            id: 3,
-            image: laptop3,
-            title: 'You can buy this product',
-            blog: '100% Authentic and Trust Worthy'
-        },
-
-    ]
 
     return (
-        <div>
-            <div id="carouselExampleCaptions" className="carousel slide relative" data-bs-ride="carousel">
-                <div className="carousel-inner relative w-full overflow-hidden">
-                    {
-                        imageSlider.map(slider => <div key={slider.id} className={`carousel-item relative float-left w-full ${slider.class}`}>
-                            <img
-                                src={slider.image}
-                                className="block w-full h-[600px] object-cover brightness-50"
-                                alt="..."
-                            />
-                            <div className="carousel-caption hidden md:block absolute top-52 text-center">
-                                <h5 className="text-5xl">{slider.title}</h5>
-                                <p className='text-lg mt-5'>{slider.blog}</p>
-                            </div>
-                        </div>)
-                    }
+        <div className="mb-16 relative">
+            <div className="h-full" style={{ backgroundImage: `url(${laptop21})`, backgroundPosition: 'center', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' }}>
+                <div className="px-4 flex flex-col justify-center mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20
+                h-[550px]">
+                    <div className="max-w-xl mb-5 sm:mb-10 items-center md:mx-auto text-center lg:max-w-2xl md:mb-12">
+                        <h2 className="max-w-2xl mb-3 sm:mb-6 font-sans text-3xl font-bold leading-normal text-white sm:text-5xl md:mx-auto">
+                            <span className="relative inline-block">
+                            </span>
+                            SELL YOUR LAPTOP FOR QUICK CASH
+                        </h2>
+                        <p className="text-base text-white md:text-lg">
+                            Sell your old device at the best price with exciting offers from Flipkart, Amazon, Paytm and lots more
+                        </p>
+                    </div>
+                    <div className="flex flex-wrap gap-2 sm:gap-0 justify-center items-center">
+                        <button
+                            className="inline-flex items-center justify-center h-12 px-6 sm:mr-6 font-medium tracking-wide bg-blue-500 text-white rounded-md"
+                        >
+                            Get started
+                        </button>
+                        <button
+                            className="btn btn-outline inline-flex items-center font-semibold text-white h-12 px-6 rounded-md"
+                        >
+                            Learn more
+                        </button>
+                    </div>
                 </div>
-                <button
-                    className="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
-                    type="button"
-                    data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="prev"
-                >
-                    <span className="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
-                    <span className="visually-hidden">Previous</span>
-                </button>
-                <button
-                    className="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
-                    type="button"
-                    data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="next"
-                >
-                    <span className="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
-                    <span className="visually-hidden">Next</span>
-                </button>
+            </div>
+            <div className="relative px-4 sm:px-0">
+                <div className="absolute inset-0 bg-gray-100 h-1/2" />
+                <div className="relative grid mx-auto overflow-hidden bg-white -z- divide-y rounded shadow sm:divide-y-0 sm:divide-x sm:max-w-screen-sm sm:grid-cols-3 lg:max-w-screen-md">
+                    <div className="inline-block p-8 text-center">
+                        <div className="flex items-center justify-center w-12 h-12 mx-auto mb-4 rounded-full bg-indigo-50">
+                            <FaShippingFast size={25}></FaShippingFast>
+                        </div>
+                        <p className="font-bold tracking-wide text-gray-800">
+                            Free Shipping
+                        </p>
+                    </div>
+                    <div className="inline-block p-8 text-center">
+                        <div className="flex items-center justify-center w-12 h-12 mx-auto mb-4 rounded-full bg-indigo-50">
+                            <MdOutlinePayments size={25}></MdOutlinePayments>
+                        </div>
+                        <p className="font-bold tracking-wide text-gray-800">
+                            Fast Payment
+                        </p>
+                    </div>
+                    <div className="inline-block p-8 text-center">
+                        <div className="flex items-center justify-center w-12 h-12 mx-auto mb-4 rounded-full bg-indigo-50">
+                            <AiOutlineSchedule size={25}></AiOutlineSchedule>
+                        </div>
+                        <p className="font-bold tracking-wide text-gray-800">
+                            Schedule Pickup
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     );

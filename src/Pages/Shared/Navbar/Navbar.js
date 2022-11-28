@@ -60,7 +60,7 @@ const Navbar = () => {
                         <li>
                             <NavLink>
                                 <Tooltip className='text-amber-500 font-bold ' content={user?.displayName ? user?.displayName : "Anonymous"} placement="bottom">
-                                    <img className='rounded-full border' style={{ height: '4   8px', width: '50px' }} src={user?.photoURL ? user.photoURL : userImg} referrerPolicy='no-referrer' alt="" />
+                                    <img className='rounded-full' style={{ height: '4   8px', width: '50px' }} src={user?.photoURL ? user.photoURL : userImg} referrerPolicy='no-referrer' alt="" />
                                 </Tooltip>
                             </NavLink>
                         </li>
