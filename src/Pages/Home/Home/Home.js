@@ -4,6 +4,7 @@ import AdvertiseProduct from '../AdvertiseProduct/AdvertiseProduct';
 import Banner from '../Banner/Banner';
 import CustomerReview from '../CustomerReview/CustomerReview';
 import FeaturedBrands from '../FeaturedBrands/FeaturedBrands';
+import Partners from '../Partners/Partners';
 
 const Home = () => {
     const { data: advertiseProducts = [] } = useQuery({
@@ -23,6 +24,7 @@ const Home = () => {
                 advertiseProducts={advertiseProducts}
             ></AdvertiseProduct>}
             <CustomerReview></CustomerReview>
+            <Partners></Partners>
         </div>
     );
 };

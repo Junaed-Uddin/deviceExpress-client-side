@@ -14,10 +14,10 @@ const CustomerReview = () => {
     })
 
     return (
-        <section className="mt-4 mb-20 dark:bg-gray-100 dark:text-gray-800">
-            <h1 className="text-4xl font-semibold text-center my-12'>Featured Brands">Customer Review</h1>
+        <section className="mt-28 dark:bg-gray-100 dark:text-gray-800">
+            <h1 className="text-4xl font-semibold text-center mb-12'>Featured Brands">Customer Review</h1>
 
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 sm:w-3/4 mx-5 sm:mx-auto gap-5 mt-6">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 sm:w-3/4 mx-5 sm:mx-auto gap-5 mt-10">
                 {
                     userReviews.map(userReview => <CustomerReviewData
                         key={userReview._id}

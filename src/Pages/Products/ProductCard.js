@@ -24,10 +24,6 @@ const ProductCard = ({ product, setProductInfo }) => {
             category_name,
         }
 
-        if (reported === 'yes') {
-            return toast.error('Already reported')
-        }
-
         fetch('http://localhost:5000/reportItems', {
             method: 'POST',
             headers: {

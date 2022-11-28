@@ -19,7 +19,7 @@ const FeaturedBrands = () => {
 
     return (
         <div className='mb-10'>
-            <h2 className='text-4xl font-semibold text-center mt-20 mb-8'>Featured Brands</h2>
+            <h2 className='text-4xl font-semibold text-center mt-28 mb-10'>Featured Brands</h2>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 sm:w-3/4 mx-5 sm:mx-auto gap-5'>
                 {
                     categories.map(category => <FeaturedBrand
