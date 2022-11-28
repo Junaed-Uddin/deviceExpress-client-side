@@ -47,7 +47,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/category/:name',
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.name}`, {
+                loader: ({ params }) => fetch(`https://device-express-server.vercel.app/category/${params.name}`, {
                     headers: {
                         authorization: `bearer ${localStorage.getItem("secretToken")}`
                     }
@@ -67,7 +67,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/payment/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/booking/${params.id}`),
+                loader: ({ params }) => fetch(`https://device-express-server.vercel.app/booking/${params.id}`),
                 element: <Payment></Payment>
             },
             {

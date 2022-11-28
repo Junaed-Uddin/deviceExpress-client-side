@@ -7,7 +7,7 @@ const CustomerReview = () => {
     const { data: userReviews = [] } = useQuery({
         queryKey: ['userReviews'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/userReviews');
+            const res = await fetch('https://device-express-server.vercel.app/userReviews');
             const data = await res.json();
             return data.data;
         }

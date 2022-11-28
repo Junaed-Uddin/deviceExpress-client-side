@@ -12,7 +12,7 @@ const ProductData = ({ product, refetch }) => {
             return toast.error('Already Advertised');
         }
 
-        fetch(`http://localhost:5000/productAdvertise/${id}`, {
+        fetch(`https://device-express-server.vercel.app/productAdvertise/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem("secretToken")}`
@@ -43,7 +43,7 @@ const ProductData = ({ product, refetch }) => {
             confirmButtonText: 'Confirm'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/soldProduct/${id}`, {
+                fetch(`https://device-express-server.vercel.app/soldProduct/${id}`, {
                     method: 'DELETE',
                     headers: {
                         authorization: `bearer ${localStorage.getItem("secretToken")}`

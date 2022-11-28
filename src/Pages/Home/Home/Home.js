@@ -10,7 +10,7 @@ const Home = () => {
     const { data: advertiseProducts = [] } = useQuery({
         queryKey: ['product/advertise'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/product/advertise');
+            const res = await fetch('https://device-express-server.vercel.app/product/advertise');
             const data = await res.json();
             return data.data;
         }

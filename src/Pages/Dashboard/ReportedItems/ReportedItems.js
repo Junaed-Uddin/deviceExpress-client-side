@@ -8,7 +8,7 @@ const ReportedItems = () => {
     const { data: reportedItems = [], refetch } = useQuery({
         queryKey: ['reportItems'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/reportItems`, {
+            const res = await fetch(`https://device-express-server.vercel.app/reportItems`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('secretToken')}`
                 }
@@ -30,8 +30,8 @@ const ReportedItems = () => {
             confirmButtonText: 'Confirm'
         }).then((result) => {
             if (result.isConfirmed) {
-                
-                fetch(`http://localhost:5000/reportedItem/${id}`, {
+
+                fetch(`https://device-express-server.vercel.app/reportedItem/${id}`, {
                     method: "DELETE",
                     headers: {
                         authorization: `bearer ${localStorage.getItem('secretToken')}`

@@ -6,7 +6,7 @@ const useToken = email => {
 
     useEffect(() => {
         if (email) {
-            axios.get(`http://localhost:5000/jwt?email=${email}`)
+            axios.get(`https://device-express-server.vercel.app/jwt?email=${email}`)
                 .then(data => {
                     if (data.data.accessToken) {
                         localStorage.setItem('secretToken', data.data.accessToken);

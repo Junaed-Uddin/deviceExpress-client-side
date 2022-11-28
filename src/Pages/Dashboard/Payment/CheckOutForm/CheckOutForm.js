@@ -16,7 +16,7 @@ const CheckOutForm = ({ bookingData }) => {
     const elements = useElements();
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://device-express-server.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -90,7 +90,7 @@ const CheckOutForm = ({ bookingData }) => {
             }
 
             // payment info stored the database
-            fetch('http://localhost:5000/payments', {
+            fetch('https://device-express-server.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     "content-type": "application/json",

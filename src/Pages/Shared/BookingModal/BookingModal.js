@@ -22,7 +22,7 @@ const BookingModal = ({ productInfo, setProductInfo }) => {
             location: form.location.value
         }
 
-        fetch('http://localhost:5000/booking', {
+        fetch('https://device-express-server.vercel.app/booking', {
             method: 'POST',
             headers: {
                 "content-type": "application/json",

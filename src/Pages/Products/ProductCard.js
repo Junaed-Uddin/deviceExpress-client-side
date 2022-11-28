@@ -24,7 +24,7 @@ const ProductCard = ({ product, setProductInfo }) => {
             category_name,
         }
 
-        fetch('http://localhost:5000/reportItems', {
+        fetch('https://device-express-server.vercel.app/reportItems', {
             method: 'POST',
             headers: {
                 "content-type": "application/json",

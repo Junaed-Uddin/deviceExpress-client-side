@@ -8,7 +8,7 @@ const useSeller = email => {
 
     useEffect(() => {
         if (email) {
-            axios.get(`http://localhost:5000/users/seller/${email}`, {
+            axios.get(`https://device-express-server.vercel.app/users/seller/${email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem("secretToken")}`
                 }

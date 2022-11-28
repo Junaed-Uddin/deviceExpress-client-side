@@ -7,7 +7,7 @@ const AllSellers = () => {
     const { data: sellers = [], isLoading, refetch } = useQuery({
         queryKey: ['users/buyer'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users/seller', {
+            const res = await fetch('https://device-express-server.vercel.app/users/seller', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem("secretToken")}`
                 }
@@ -35,7 +35,7 @@ const AllSellers = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/deleteSellers/${id}`, {
+                fetch(`https://device-express-server.vercel.app/deleteSellers/${id}`, {
                     method: 'DELETE',
                     headers: {
                         authorization: `bearer ${localStorage.getItem('secretToken')}`
@@ -64,7 +64,7 @@ const AllSellers = () => {
     }
 
     const handleVerified = (email) => {
-        fetch(`http://localhost:5000/userVerified/${email}`, {
+        fetch(`https://device-express-server.vercel.app/userVerified/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem("secretToken")}`
