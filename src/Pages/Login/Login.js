@@ -1,31 +1,27 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Loader from '../../Components/Loader/Loader';
 import { AuthProvider } from '../../Contexts/AuthContext';
 import useToken from '../../hooks/useToken';
 
 const Login = () => {
     const [userEmail, setUserEmail] = useState('');
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
     const { userLogin, googleLogin } = useContext(AuthProvider);
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const location = useLocation();
     const navigate = useNavigate();
     const [token] = useToken(userEmail);
     const from = location.state?.from?.pathname || '/';
+    console.log(from);
 
-
-    if (token) {
-        navigate(from, { replace: true });
-        setLoading(false);
-    }
-
-    if (loading) {
-        return <Loader></Loader>
-    }
+    useEffect(() => {
+        if (token) {
+            return navigate(from, { replace: true });
+        }
+    }, [token, navigate, from])
 
     const handleLogin = data => {
         userLogin(data.email, data.password)
@@ -54,7 +50,6 @@ const Login = () => {
             .then(data => {
                 if (data.success) {
                     console.log(data);
-                    setLoading(true);
                     toast.success(data.message);
                     setUserEmail(email);
                     reset();

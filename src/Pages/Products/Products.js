@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigation } from 'react-router-dom';
+import Loader from '../../Components/Loader/Loader';
 import BookingModal from '../Shared/BookingModal/BookingModal';
 import ProductCard from './ProductCard';
 
 const Products = () => {
     const productsData = useLoaderData();
     const [productInfo, setProductInfo] = useState({});
+    const navigation = useNavigation();
+    
+    if (navigation.state === "loading") {
+        return <Loader></Loader>
+    }
 
     return (
         <section className='mx-2 sm:mx-14 my-10'>
