@@ -36,6 +36,6 @@
 - Express, node, mongoDB, JWT, env variable, localStorage
 
 
-- Admin Credential- 
+### `Admin Credential:-` 
 - adminEmail: admin@pannel.com
 - adminPassword: As@123456
