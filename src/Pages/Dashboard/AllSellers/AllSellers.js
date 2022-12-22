@@ -84,7 +84,7 @@ const AllSellers = () => {
     }
 
     return (
-        <div className='my-8'>
+        <div className='my-8' data-aos="fade-up" data-aos-duration="800">
             <h2 className='text-3xl font-semibold'>All Sellers: {sellers.length}</h2>
 
             {sellers.length > 0 &&

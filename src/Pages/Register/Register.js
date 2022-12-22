@@ -73,7 +73,7 @@ const Register = () => {
     }
 
     return (
-        <div className='flex flex-col items-center py-5 rounded-lg px-8 h-full w-full max-w-sm mx-auto shadow-2xl my-5 justify-center outline outline-slate-50'>
+        <div className='flex flex-col items-center py-5 rounded-lg px-8 h-full w-full max-w-sm mx-auto shadow-2xl my-5 justify-center outline outline-slate-50' data-aos="fade-up" data-aos-duration="800">
             <form onSubmit={handleSubmit(handleRegister)} className='w-full max-w-sm mx-auto'>
                 <h2 className='text-3xl mb-1 text-center font-bold text-violet-500'>Register</h2>
                 <div className="form-control w-full max-w-xs mx-auto">

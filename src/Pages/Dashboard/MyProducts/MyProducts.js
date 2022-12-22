@@ -25,7 +25,7 @@ const MyProducts = () => {
     }
 
     return (
-        <div className='my-7'>
+        <div className='my-7' data-aos="fade-up" data-aos-duration="800">
             <h2 className='text-3xl font-semibold'>My Products: {products.length}</h2>
             {products.length > 0 &&
                 <div className="overflow-x-auto w-full mt-5">

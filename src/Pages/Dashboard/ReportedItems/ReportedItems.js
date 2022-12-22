@@ -59,7 +59,7 @@ const ReportedItems = () => {
 
 
     return (
-        <div className='my-8'>
+        <div className='my-8' data-aos="fade-up" data-aos-duration="800">
             <h2 className='text-3xl font-semibold'>Reported Items: {reportedItems.length}</h2>
             {reportedItems.length > 0 &&
                 <div className="overflow-x-auto w-full mt-5">

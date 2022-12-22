@@ -7,7 +7,7 @@ import { AiOutlineSchedule } from 'react-icons/ai';
 const Banner = () => {
 
     return (
-        <div className="mb-16 relative -z-10">
+        <div className="mb-16 relative -z-10" data-aos="fade-up" data-aos-duration="1500">
             <div className="h-full" style={{ backgroundImage: `url(${laptop21})`, backgroundPosition: 'center', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' }}>
                 <div className="px-4 flex flex-col justify-center mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20
                 h-[580px]">

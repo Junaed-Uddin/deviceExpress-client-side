@@ -20,7 +20,7 @@ const FeaturedBrands = () => {
     return (
         <div className='mb-10'>
             <h2 className='text-4xl font-semibold text-center mt-28 mb-10'>Featured Brands</h2>
-            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 sm:w-3/4 mx-5 sm:mx-auto gap-5'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 sm:w-3/4 mx-5 sm:mx-auto gap-5' data-aos="fade-up" data-aos-duration="800">
                 {
                     categories.map(category => <FeaturedBrand
                         key={category._id}

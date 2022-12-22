@@ -24,7 +24,7 @@ const MyOrders = () => {
     }
 
     return (
-        <div className='my-7'>
+        <div className='my-7' data-aos="fade-up" data-aos-duration="800">
             <h2 className='text-3xl font-semibold'>Total Orders: {orders.length}</h2>
 
             {orders.length > 0 &&

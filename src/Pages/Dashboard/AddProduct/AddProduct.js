@@ -82,7 +82,7 @@ const AddProduct = () => {
     }
 
     return (
-        <div className='w-full my-7'>
+        <div className='w-full my-7' data-aos="fade-up" data-aos-duration="1500">
             <h2 className='text-3xl font-semibold'>Add Products</h2>
 
             <form onSubmit={handleSubmit(handleProduct)} className='bg-gray-200 p-5 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mt-5 w-full'>

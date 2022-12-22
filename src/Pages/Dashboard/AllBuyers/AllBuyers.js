@@ -64,7 +64,7 @@ const AllBuyers = () => {
 
 
     return (
-        <div className='my-8'>
+        <div className='my-8' data-aos="fade-up" data-aos-duration="800">
             <h2 className='text-3xl font-semibold'>All buyers: {buyers.length}</h2>
             {buyers.length > 0 &&
                 <div className="overflow-x-auto mt-5">

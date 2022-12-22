@@ -4,7 +4,7 @@ const AdvertisementData = ({ product }) => {
     const { image, productName, resale_price, description, status, used_year, warrantee } = product;
 
     return (
-        <div className="card rounded-lg shadow-2xl">
+        <div className="card rounded-lg shadow-2xl" data-aos="fade-up" data-aos-duration="800">
             <figure><img className='h-72 w-full' src={image} alt="Shoes" /></figure>
             <div className="card-body">
                 <div className='flex items-center justify-between'>

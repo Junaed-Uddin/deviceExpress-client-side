@@ -18,7 +18,7 @@ const Products = () => {
             <div className='flex items-center'>
                 <p className='text-2xl font-semibold'>Total Laptop Found: {productsData.data.length}</p>
             </div>
-            <div className='my-8 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
+            <div className='my-8 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5' data-aos="fade-up" data-aos-duration="800">
                 {
                     productsData.data.map(product => <ProductCard
                         key={product._id}

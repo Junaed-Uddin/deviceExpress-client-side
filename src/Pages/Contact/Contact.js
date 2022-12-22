@@ -4,7 +4,7 @@ import { AiTwotoneMail } from 'react-icons/ai';
 
 const Contact = () => {
     return (
-        <div>
+        <div data-aos="fade-up" data-aos-duration="800">
             <div className="grid max-w-screen-xl grid-cols-1 gap-8 px-2 sm:px-8 py-16 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 dark:bg-gray-100 dark:text-gray-900">
                 <div className="flex flex-col bg-blue-700 p-8 sm:p-14 text-white">
                     <div className="space-y-5">
