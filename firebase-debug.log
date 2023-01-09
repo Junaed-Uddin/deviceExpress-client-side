@@ -1,65 +1,13 @@
-[debug] [2023-01-09T10:06:07.412Z] ----------------------------------------------------------------------
-[debug] [2023-01-09T10:06:07.415Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\junae\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
-[debug] [2023-01-09T10:06:07.415Z] CLI Version:   11.16.0
-[debug] [2023-01-09T10:06:07.416Z] Platform:      win32
-[debug] [2023-01-09T10:06:07.416Z] Node Version:  v16.15.1
-[debug] [2023-01-09T10:06:07.419Z] Time:          Mon Jan 09 2023 16:06:07 GMT+0600 (Bangladesh Standard Time)
-[debug] [2023-01-09T10:06:07.420Z] ----------------------------------------------------------------------
+[debug] [2023-01-09T10:15:27.317Z] ----------------------------------------------------------------------
+[debug] [2023-01-09T10:15:27.319Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\junae\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2023-01-09T10:15:27.320Z] CLI Version:   11.20.0
+[debug] [2023-01-09T10:15:27.320Z] Platform:      win32
+[debug] [2023-01-09T10:15:27.320Z] Node Version:  v16.15.1
+[debug] [2023-01-09T10:15:27.321Z] Time:          Mon Jan 09 2023 16:15:27 GMT+0600 (Bangladesh Standard Time)
+[debug] [2023-01-09T10:15:27.322Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2023-01-09T10:06:07.424Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
-[debug] [2023-01-09T10:06:07.550Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2023-01-09T10:06:07.551Z] > authorizing via signed-in user (junaed.binuddin@gmail.com)
-[info] 
-     ######## #### ########  ######## ########     ###     ######  ########
-     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
-     ######    ##  ########  ######   ########  #########  ######  ######
-     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
-     ##       #### ##     ## ######## ########  ##     ##  ######  ########
-
-You're about to initialize a Firebase project in this directory:
-
-  C:\Users\junae\Downloads\Programming Hero\6. Node\Final Assignment\DeviceExpress
-
-Before we get started, keep in mind:
-
-  * You are initializing within an existing Firebase project directory
-
-[debug] [2023-01-09T10:06:08.278Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
-[debug] [2023-01-09T10:06:08.278Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
-[info] 
-=== Project Setup
-[info] 
-[info] First, let's associate this project directory with a Firebase project.
-[info] You can create multiple project aliases by running firebase use --add, 
-[info] but for now we'll just set up a default project.
-[info] 
-[debug] [2023-01-09T10:06:17.735Z] Using project from CLI flag: deviceexpress-93b20
-[debug] [2023-01-09T10:06:17.736Z] > refreshing access token with scopes: []
-[debug] [2023-01-09T10:06:17.738Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
-[debug] [2023-01-09T10:06:17.738Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2023-01-09T10:06:17.961Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
-[debug] [2023-01-09T10:06:17.961Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2023-01-09T10:06:17.972Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/deviceexpress-93b20 [none]
-[debug] [2023-01-09T10:06:18.557Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/deviceexpress-93b20 200
-[debug] [2023-01-09T10:06:18.557Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/deviceexpress-93b20 {"projectId":"deviceexpress-93b20","projectNumber":"621175233356","displayName":"DeviceExpress","name":"projects/deviceexpress-93b20","resources":{"hostingSite":"deviceexpress-93b20"},"state":"ACTIVE","etag":"1_fc27d381-63bd-40e2-8935-a1e532e0419d"}
-[info] i  Using project deviceexpress-93b20 (DeviceExpress) 
-[info] 
-=== Hosting Setup
-[info] 
-[info] Your public directory is the folder (relative to your project directory) that
-[info] will contain Hosting assets to be uploaded with firebase deploy. If you
-[info] have a build process for your assets, use your build's output directory.
-[info] 
-[debug] [2023-01-09T10:08:45.841Z] ----------------------------------------------------------------------
-[debug] [2023-01-09T10:08:45.843Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\junae\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
-[debug] [2023-01-09T10:08:45.844Z] CLI Version:   11.16.0
-[debug] [2023-01-09T10:08:45.844Z] Platform:      win32
-[debug] [2023-01-09T10:08:45.844Z] Node Version:  v16.15.1
-[debug] [2023-01-09T10:08:45.845Z] Time:          Mon Jan 09 2023 16:08:45 GMT+0600 (Bangladesh Standard Time)
-[debug] [2023-01-09T10:08:45.846Z] ----------------------------------------------------------------------
-[debug] 
-[debug] [2023-01-09T10:08:45.954Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2023-01-09T10:08:45.955Z] > authorizing via signed-in user (junaed.binuddin@gmail.com)
+[debug] [2023-01-09T10:15:27.418Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-01-09T10:15:27.418Z] > authorizing via signed-in user (junaed.binuddin@gmail.com)
 [info] 
      ######## #### ########  ######## ########     ###     ######  ########
      ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
@@ -82,11 +30,11 @@ Before we get started, keep in mind:
 [info] You can create multiple project aliases by running firebase use --add, 
 [info] but for now we'll just set up a default project.
 [info] 
-[debug] [2023-01-09T10:09:17.392Z] Using project from CLI flag: deviceexpress-93b20
-[debug] [2023-01-09T10:09:17.395Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/deviceexpress-93b20 [none]
-[debug] [2023-01-09T10:09:17.940Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/deviceexpress-93b20 200
-[debug] [2023-01-09T10:09:17.940Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/deviceexpress-93b20 {"projectId":"deviceexpress-93b20","projectNumber":"621175233356","displayName":"DeviceExpress","name":"projects/deviceexpress-93b20","resources":{"hostingSite":"deviceexpress-93b20"},"state":"ACTIVE","etag":"1_fc27d381-63bd-40e2-8935-a1e532e0419d"}
-[info] i  Using project deviceexpress-93b20 (DeviceExpress) 
+[debug] [2023-01-09T10:15:44.645Z] Using project from CLI flag: assignment-67469
+[debug] [2023-01-09T10:15:44.649Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/assignment-67469 [none]
+[debug] [2023-01-09T10:15:45.217Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/assignment-67469 200
+[debug] [2023-01-09T10:15:45.217Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/assignment-67469 {"projectId":"assignment-67469","projectNumber":"621175233356","displayName":"DeviceExpress","name":"projects/assignment-67469","resources":{"hostingSite":"assignment-67469"},"state":"ACTIVE","etag":"1_fc27d381-63bd-40e2-8935-a1e532e0419d"}
+[info] i  Using project assignment-67469 (DeviceExpress) 
 [info] 
 === Hosting Setup
 [info] 
