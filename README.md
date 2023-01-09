@@ -1,6 +1,6 @@
 ## Project Name: DeviceExpress
 
-### Live Link: https://assignment-67469.web.app/
+### Live Link: https://deviceexpress-93b20.web.app/
 
 ### `Features:-`
 
