@@ -31,7 +31,8 @@ const OrderData = ({ order }) => {
                 {resalePrice} BDT
             </td>
             <td>
-                {order.resalePrice && !order.paid ? <Link to={`/dashboard/payment/${_id}`}><button className="btn bg-red-500 text-white border-none">Pay</button></Link> :
+                {order.resalePrice && !order.paid ?
+                    <Link to={`/dashboard/payment/${_id}`}><button className="btn bg-red-500 text-white border-none">Pay</button></Link> :
                     <span className='px-3 py-2 text-white bg-green-400 rounded border-none'>Paid</span>
                 }
             </td>
