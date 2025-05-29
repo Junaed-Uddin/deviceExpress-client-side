@@ -1,4 +1,4 @@
-## Project Name: DeviceExpress
+## Project Name: DeviceExpress (Ongoing)
 
 ### Live Link: https://deviceexpress-93b20.web.app/
 
